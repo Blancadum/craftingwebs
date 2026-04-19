@@ -30,7 +30,7 @@ export default function Contacto() {
         const form = e.currentTarget
         const data = new FormData(form)
         data.append('servicios', selected.join(', '))
-        data.append('access_key', 'fc0a4300-ef21-4f5e-96df-ee41f59adfa7')
+        data.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY!)
 
         const res = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
