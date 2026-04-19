@@ -10,15 +10,14 @@ export default function Button({ label, href, variant = 'primary' }: ButtonProps
     const isPrimary = variant === 'primary'
 
     return (
-        <Link href={href} style={{
-            display: 'inline-flex', alignItems: 'center', gap: '6px',
-            background: isPrimary ? '#f5f5f3' : 'transparent',
-            color: isPrimary ? '#111' : '#888780',
-            fontSize: '13px', fontWeight: isPrimary ? 500 : 400,
-            padding: isPrimary ? '10px 22px' : '10px 0',
-            borderRadius: isPrimary ? '4px' : '0',
-            textDecoration: 'none', letterSpacing: '0.02em',
-        }}>
+        <Link
+            href={href}
+            className={
+                isPrimary
+                    ? 'inline-flex items-center gap-1.5 bg-cw-white text-cw-black text-sm font-medium px-5 py-2.5 rounded no-underline tracking-[0.02em]'
+                    : 'inline-flex items-center gap-1.5 bg-transparent text-cw-gray-6 text-sm font-normal px-0 py-2.5 no-underline'
+            }
+        >
             {label}
         </Link>
     )

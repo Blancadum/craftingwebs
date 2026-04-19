@@ -1,5 +1,5 @@
+import Link from 'next/link'
 import SectionLabel from '../ui/SectionLabel'
-import { servicesStyles as s} from '@/src/styles/services'
 
 const services = [
   { num: '01', name: 'Desarrollo web', desc: 'Webs rápidas, accesibles y optimizadas. WordPress, Next.js o custom según tu proyecto.' },
@@ -12,23 +12,23 @@ const services = [
 
 export default function Services() {
   return (
-    <section style={s.section}>
-      <div style={s.container}>
+    <section className="bg-cw-gray-10 py-16 px-8 md:py-[72px]">
+      <div className="max-w-[1100px] mx-auto">
 
         <SectionLabel text="Lo que hacemos" />
 
-        <h2 style={s.title}>
+        <h2 className="text-2xl md:text-[28px] font-medium text-cw-black mb-12 tracking-[-0.03rem] leading-[1.3]">
           Soluciones digitales<br />
           para profesionales reales.
         </h2>
 
-        <div style={s.grid}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-cw-gray-9 border border-cw-gray-9 rounded-lg overflow-hidden">
           {services.map((sv) => (
-            <div key={sv.num} style={s.card}>
-              <span style={s.cardNum}>{sv.num}</span>
-              <h3 style={s.cardName}>{sv.name}</h3>
-              <p style={s.cardDesc}>{sv.desc}</p>
-              <span style={s.cardLink}>Ver más →</span>
+            <div key={sv.num} className="bg-cw-white p-7 flex flex-col gap-3">
+              <span className="text-[10px] font-medium text-cw-gray-8 tracking-[0.1rem]">{sv.num}</span>
+              <h3 className="text-sm font-medium text-cw-black leading-snug">{sv.name}</h3>
+              <p className="text-xs text-cw-gray-6 leading-7 m-0">{sv.desc}</p>
+              <Link href="/servicios" className="text-[11px] text-cw-gray-4 mt-auto pt-2 tracking-[0.03rem] no-underline">Ver más →</Link>
             </div>
           ))}
         </div>

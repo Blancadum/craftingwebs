@@ -4,16 +4,9 @@ interface BadgeProps {
 
 export default function Badge({ text }: BadgeProps) {
     return (
-        <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: '8px',
-            border: '0.5px solid #333', borderRadius: '100px',
-            padding: '5px 14px', marginBottom: '20px',
-        }}>
-            <span style={{
-                width: 6, height: 6, borderRadius: '50%',
-                background: '#888780', display: 'inline-block',
-            }} />
-            <span style={{ color: '#888780', fontSize: '11px', letterSpacing: '0.12rem' }}>
+        <div className="inline-flex items-center gap-2 border border-cw-gray-3 rounded-full px-3.5 py-1 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-cw-gray-6 inline-block" />
+            <span className="text-cw-gray-6 text-[11px] tracking-[0.12rem]">
                 {text}
             </span>
         </div>

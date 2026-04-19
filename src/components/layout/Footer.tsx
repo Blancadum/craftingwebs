@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { footerStyles as s} from '@/src/styles/footer'
+import FooterBrand from '@/src/components/ui/FooterBrand'
+import FooterCol from '@/src/components/ui/FooterCol'
 
 const navLinks = [
   { label: 'Servicios', href: '/servicios' },
@@ -11,71 +11,28 @@ const navLinks = [
 const social = [
   { label: 'Instagram', href: 'https://instagram.com' },
   { label: 'LinkedIn', href: 'https://linkedin.com' },
-  { label: 'Behance', href: 'https://behance.net' },
 ]
 
 export default function Footer() {
   return (
-    <footer style={s.footer}>
-      <div style={s.container}>
+    <footer className="bg-cw-black border-t border-cw-gray-2">
+      <div className="max-w-[1100px] mx-auto px-8 pt-12">
 
-        <div style={s.top}>
+        <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] gap-12 pb-12 border-b border-cw-gray-2">
 
-          {/* Brand */}
-          <div>
-            <div style={s.brand}>
-              <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-                <polyline points="2,26 9,6 16,20 23,6 30,26"
-                  stroke="#b4b2a9" strokeWidth="2.5"
-                  strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="2" cy="26" r="2" fill="#888780" />
-                <circle cx="30" cy="26" r="2" fill="#888780" />
-              </svg>
-              <span style={s.brandText}>
-                Crafting<span style={s.brandSpan}>Webs</span>
-              </span>
-            </div>
-            <p style={s.brandDesc}>
-              Agencia digital especializada en profesionales autónomos.
-              Webs a medida, SEO y estrategia digital desde Estepona.
-            </p>
-            <p style={s.brandEmail}>hola@craftingwebs.es</p>
-          </div>
+          <FooterBrand />
 
-          {/* Nav */}
-          <div>
-            <p style={s.colLabel}>NAVEGACIÓN</p>
-            <div style={s.col}>
-              {navLinks.map((l) => (
-                <Link key={l.label} href={l.href} style={s.link}>
-                  {l.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Social */}
-          <div>
-            <p style={s.colLabel}>REDES</p>
-            <div style={s.col}>
-              {social.map((l) => (
-                <a key={l.label} href={l.href}
-                  target="_blank" rel="noopener noreferrer"
-                  style={s.link}>
-                  {l.label}
-                </a>
-              ))}
-            </div>
-          </div>
+          <FooterCol label="NAVEGACIÓN" links={navLinks} />
+          <FooterCol label="REDES" links={social} external />
 
         </div>
 
         {/* Bottom */}
-        <div style={s.bottom}>
-          <span style={s.bottomText}>
+        <div className="flex flex-col md:flex-row justify-between items-center py-5 gap-2">
+          <span className="text-cw-gray-3 text-[11px]">
             © {new Date().getFullYear()} CraftingWebs — Estepona, España
           </span>
-          <span style={s.bottomText}>craftingwebs.es</span>
+          <span className="text-cw-gray-3 text-[11px]">craftingwebs.es</span>
         </div>
 
       </div>
