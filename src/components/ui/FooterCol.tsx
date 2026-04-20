@@ -9,7 +9,7 @@ interface FooterColProps {
 export default function FooterCol({ label, links, external }: FooterColProps) {
     return (
         <div>
-            <span className="text-[10px] tracking-[0.16rem] text-cw-gray-4 mb-4 block">
+            <span className="text-[10px] tracking-[0.16rem] text-cw-gray-6 mb-4 block">
                 {label}
             </span>
             <div className="flex flex-col gap-2.5">
@@ -20,7 +20,7 @@ export default function FooterCol({ label, links, external }: FooterColProps) {
                             href={l.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-cw-gray-6 text-sm no-underline hover:text-cw-gray-4 transition-colors"
+                            className="text-cw-gray-5 text-xs no-underline hover:text-cw-gray-7 transition-colors"
                         >
                             {l.label}
                         </a>
@@ -28,7 +28,7 @@ export default function FooterCol({ label, links, external }: FooterColProps) {
                         <Link
                             key={l.label}
                             href={l.href}
-                            className="text-cw-gray-6 text-sm no-underline hover:text-cw-gray-4 transition-colors"
+                            className="text-cw-gray-5 text-xs no-underline hover:text-cw-gray-7 transition-colors"
                         >
                             {l.label}
                         </Link>

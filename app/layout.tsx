@@ -11,8 +11,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'CraftingWebs — Agencia digital para profesionales',
-  description: 'Desarrollo web, SEO y soluciones digitales a medida para profesionales autónomos. Estepona, España.',
-  keywords: ['agencia digital', 'desarrollo web', 'SEO', 'Estepona', 'profesionales'],
+  description: 'Desarrollo web, SEO y soluciones digitales a medida para profesionales autónomos.',
+  keywords: ['agencia digital', 'desarrollo web', 'SEO', 'profesionales'],
   authors: [{ name: 'CraftingWebs' }],
   openGraph: {
     title: 'CraftingWebs — Tu equipo digital',

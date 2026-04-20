@@ -28,7 +28,7 @@ export default function Services() {
               <span className="text-[10px] font-medium text-cw-gray-8 tracking-[0.1rem]">{sv.num}</span>
               <h3 className="text-sm font-medium text-cw-black leading-snug">{sv.name}</h3>
               <p className="text-xs text-cw-gray-6 leading-7 m-0">{sv.desc}</p>
-              <Link href="/servicios" className="text-[11px] text-cw-gray-4 mt-auto pt-2 tracking-[0.03rem] no-underline">Ver más →</Link>
+              <Link href="/servicios" className="text-[11px] text-cw-gray-4 mt-auto pt-2 tracking-[0.03rem] no-underline hover:text-cw-gray-6 transition-colors">Ver más →</Link>
             </div>
           ))}
         </div>

@@ -13,6 +13,7 @@ export default function Proyectos() {
                 badge="PROYECTOS"
                 title="Nuestro trabajo."
                 subtitle="Resultados reales."
+                description="Cada modelo tiene su propio código de referencia. Si ves algo que te inspire, dinos el código — «quiero algo como el Nácar 02» — y lo adaptamos a tu marca y sector desde cero."
             />
             <ProyectosContent />
             <Footer />

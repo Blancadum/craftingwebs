@@ -4,9 +4,10 @@ interface PageHeroProps {
     badge: string
     title: string
     subtitle: string
+    description?: string
 }
 
-export default function PageHero({ badge, title, subtitle }: PageHeroProps) {
+export default function PageHero({ badge, title, subtitle, description }: PageHeroProps) {
     return (
         <section className="bg-cw-black min-h-[60vh] py-16 px-8 md:py-[72px] md:px-8">
             <div className="max-w-[1100px] mx-auto">
@@ -15,6 +16,11 @@ export default function PageHero({ badge, title, subtitle }: PageHeroProps) {
                     {title}<br />
                     <span className="text-cw-gray-6">{subtitle}</span>
                 </h1>
+                {description && (
+                    <p className="text-cw-gray-6 text-sm leading-7 max-w-[520px] mt-6">
+                        {description}
+                    </p>
+                )}
             </div>
         </section>
     )

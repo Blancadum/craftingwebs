@@ -16,7 +16,7 @@ export default function Navbar() {
 
             <div className="hidden md:flex gap-7">
                 {links.map((item) => (
-                    <Link key={item} href={`/${item.toLowerCase()}`} className="text-cw-gray-6 text-sm no-underline">
+                    <Link key={item} href={`/${item.toLowerCase()}`} className="text-cw-gray-7 text-sm no-underline hover:text-cw-gray-9 transition-colors">
                         {item}
                     </Link>
                 ))}

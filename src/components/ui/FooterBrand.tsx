@@ -9,11 +9,11 @@ export default function FooterBrand() {
                     Crafting<span className="text-cw-gray-7 font-medium">Webs</span>
                 </span>
             </div>
-            <p className="text-cw-gray-5 text-xs leading-7 max-w-[260px] mt-2">
+            <p className="text-cw-gray-6 text-xs leading-7 max-w-[260px] mt-2">
                 Agencia digital especializada en profesionales autónomos.
-                Webs a medida, SEO y estrategia digital desde Estepona.
+                Webs a medida, SEO y estrategia digital para profesionales.
             </p>
-            <p className="text-cw-gray-4 text-[11px] mt-4">hola@craftingwebs.es</p>
+            <p className="text-cw-gray-6 text-[11px] mt-4">hola@craftingwebs.es</p>
         </div>
     )
 }

@@ -29,10 +29,12 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center py-5 gap-2">
-          <span className="text-cw-gray-3 text-[11px]">
-            © {new Date().getFullYear()} CraftingWebs — Estepona, España
+          <span className="text-cw-gray-5 text-[11px]">
+            © {new Date().getFullYear()} CraftingWebs — España
           </span>
-          <span className="text-cw-gray-3 text-[11px]">craftingwebs.es</span>
+          <a href="mailto:blancadum@gmail.com" className="text-cw-gray-5 text-[11px] no-underline hover:text-cw-gray-7 transition-colors">
+            Desarrollado por Blanca de Uña Martín
+          </a>
         </div>
 
       </div>

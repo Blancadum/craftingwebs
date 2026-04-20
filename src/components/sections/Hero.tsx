@@ -25,7 +25,7 @@ export default function Hero() {
           <span className="text-cw-gray-6">Somos tu equipo digital.</span>
         </h1>
 
-        <p className="text-cw-gray-5 text-sm md:text-[15px] leading-7 max-w-[440px] mb-7">
+        <p className="text-cw-gray-6 text-sm md:text-[15px] leading-7 max-w-[440px] mb-7">
           Si eres profesional autónomo y necesitas una presencia digital
           que refleje exactamente quién eres, estás en el lugar correcto.
         </p>
@@ -33,8 +33,8 @@ export default function Hero() {
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-10">
           {diferencial.map((d) => (
             <div key={d.num} className="flex gap-2.5 items-start">
-              <span className="text-cw-gray-3 text-[11px] font-medium tracking-[0.08rem] pt-0.5">{d.num}</span>
-              <span className="text-cw-gray-5 text-xs leading-relaxed whitespace-pre-line">{d.text}</span>
+              <span className="text-cw-gray-5 text-[11px] font-medium tracking-[0.08rem] pt-0.5">{d.num}</span>
+              <span className="text-cw-gray-6 text-xs leading-relaxed whitespace-pre-line">{d.text}</span>
             </div>
           ))}
         </div>

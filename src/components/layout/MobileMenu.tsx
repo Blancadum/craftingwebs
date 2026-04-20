@@ -36,7 +36,7 @@ export default function MobileMenu() {
                             key={item}
                             href={`/${item.toLowerCase()}`}
                             onClick={() => setOpen(false)}
-                            className="text-cw-gray-6 text-sm no-underline"
+                            className="text-cw-gray-7 text-sm no-underline hover:text-cw-gray-9 transition-colors"
                         >
                             {item}
                         </Link>
@@ -44,7 +44,7 @@ export default function MobileMenu() {
                     <Link
                         href="/contacto"
                         onClick={() => setOpen(false)}
-                        className="text-cw-gray-6 text-sm no-underline"
+                        className="text-cw-gray-7 text-sm no-underline hover:text-cw-gray-9 transition-colors"
                     >
                         Contacto
                     </Link>

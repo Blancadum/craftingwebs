@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import Navbar from '@/src/components/layout/Navbar'
 import Footer from '@/src/components/layout/Footer'
 import ContactForm from '@/src/components/sections/ContactForm'
@@ -26,7 +27,9 @@ export default function Contacto() {
                 </div>
             </section>
 
-            <ContactForm />
+            <Suspense fallback={null}>
+                <ContactForm />
+            </Suspense>
 
             <Footer />
         </main>
