@@ -155,7 +155,7 @@ export default function ProyectoCard({ codigo, sector, variant, tags, onClick }:
       onClick={onClick}
       className={`flex-shrink-0 w-[260px] md:w-[290px] rounded-lg overflow-hidden border border-cw-gray-9 bg-white group snap-start ${onClick ? 'cursor-pointer hover:border-cw-gray-6 transition-colors' : ''}`}
     >
-      <div className="w-full overflow-hidden bg-cw-gray-10" style={{ aspectRatio: '360/220' }}>
+      <div className="w-full overflow-hidden bg-cw-gray-10 aspect-mockup">
         <Mockup variant={variant} />
       </div>
       <div className="px-4 py-3 border-t border-cw-gray-9">

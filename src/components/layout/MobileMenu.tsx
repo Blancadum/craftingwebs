@@ -3,7 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
-const links = ['Servicios', 'Proyectos', 'Nosotros']
+const links = [
+    { label: 'Servicios', href: '/servicios' },
+    { label: 'Catálogo', href: '/catalogo' },
+    { label: 'Nosotros', href: '/nosotros' },
+]
 
 export default function MobileMenu() {
     const [open, setOpen] = useState(false)
@@ -33,12 +37,12 @@ export default function MobileMenu() {
                 <div className="absolute top-14 left-0 right-0 bg-cw-black border-b border-cw-gray-2 px-8 py-4 flex flex-col gap-4">
                     {links.map((item) => (
                         <Link
-                            key={item}
-                            href={`/${item.toLowerCase()}`}
+                            key={item.href}
+                            href={item.href}
                             onClick={() => setOpen(false)}
                             className="text-cw-gray-7 text-sm no-underline hover:text-cw-gray-9 transition-colors"
                         >
-                            {item}
+                            {item.label}
                         </Link>
                     ))}
                     <Link

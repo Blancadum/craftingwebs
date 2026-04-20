@@ -41,7 +41,8 @@ export default function ContactForm() {
   const tipo  = params.get('tipo')
   const min   = parseInt(params.get('min') || '0')
   const max   = parseInt(params.get('max') || '0')
-  const fromPlanifica = !!(ref && tipo && min && max)
+  const hasModel  = !!(ref && tipo)          // viene del catálogo o de planifica
+  const hasBudget = !!(min && max)           // solo cuando viene de planifica (lleva rango)
 
   const [selectedServicios, setSelectedServicios] = useState<string[]>([])
   const [selectedExtras, setSelectedExtras]       = useState<string[]>([])
@@ -72,10 +73,12 @@ export default function ContactForm() {
     data.append('servicios',       selectedServicios.join(', '))
     data.append('extras',          selectedExtras.map(id => extras.find(x => x.id === id)?.label).join(', '))
     data.append('extras_importe',  extrasTotal > 0 ? `+${formatEuros(extrasTotal)}` : 'Ninguno')
-    if (fromPlanifica) {
-      data.append('modelo_recomendado', `${tipo} — ${ref}`)
-      data.append('presupuesto_base',   `${formatEuros(min)} — ${formatEuros(max)}`)
-      data.append('presupuesto_total',  `${formatEuros(totalMin)} — ${formatEuros(totalMax)}`)
+    if (hasModel) {
+      data.append('modelo_seleccionado', `${tipo} — ${ref}`)
+    }
+    if (hasBudget) {
+      data.append('presupuesto_base',  `${formatEuros(min)} — ${formatEuros(max)}`)
+      data.append('presupuesto_total', `${formatEuros(totalMin)} — ${formatEuros(totalMax)}`)
     }
     data.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY!)
 
@@ -103,7 +106,7 @@ export default function ContactForm() {
         <p className="text-[10px] tracking-[0.16rem] text-cw-gray-6 mb-4">CÓMO TRABAJAMOS</p>
         {steps.map(p => (
           <div key={p.n} className="flex gap-3 mb-4">
-            <div className="w-5 h-5 rounded-full bg-cw-black flex items-center justify-center shrink-0">
+            <div className="w-5 h-5 rounded-full bg-cw-gray-3 flex items-center justify-center shrink-0">
               <span className="text-cw-white text-[9px] font-medium">{p.n}</span>
             </div>
             <div>
@@ -134,10 +137,30 @@ export default function ContactForm() {
             <p className="text-sm text-cw-gray-6">Te contactamos en menos de 24h con una propuesta personalizada.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <>
+            {/* CTA catálogo — prominente, bloquea el formulario si no hay modelo */}
+            {!hasModel && (
+              <a
+                href="/catalogo"
+                className="group block bg-cw-black rounded-lg p-6 no-underline mb-8 hover:opacity-90 transition-opacity"
+              >
+                <p className="text-[10px] tracking-[0.18rem] text-cw-gray-5 mb-3">ANTES DE ESCRIBIRNOS</p>
+                <p className="text-[17px] font-medium text-cw-white leading-snug mb-2">
+                  ¿Tienes algún ejemplo que te inspire?
+                </p>
+                <p className="text-sm text-cw-gray-6 leading-[1.8] mb-5">
+                  Elige un modelo del catálogo como referencia visual. Así podemos darte una propuesta mucho más precisa desde el primer contacto.
+                </p>
+                <span className="inline-flex items-center gap-2 text-xs text-cw-gray-7 tracking-[0.08rem] group-hover:text-cw-white transition-colors">
+                  Ir al catálogo →
+                </span>
+              </a>
+            )}
 
-            {/* Modelo sugerido (solo si viene de /planifica) */}
-            {fromPlanifica && (
+            <form onSubmit={handleSubmit} className={`flex flex-col gap-6 ${!hasModel ? 'opacity-40 pointer-events-none select-none' : ''}`}>
+
+            {/* Modelo seleccionado (viene del catálogo o de planifica) */}
+            {hasModel && (
               <div className="bg-cw-gray-10 border border-cw-gray-9 rounded-lg p-4">
                 <p className="text-[10px] tracking-[0.12rem] text-cw-gray-6 mb-2">MODELO SELECCIONADO</p>
                 <div className="flex items-baseline justify-between">
@@ -145,10 +168,12 @@ export default function ContactForm() {
                     <p className="text-sm font-medium text-cw-black">{tipo}</p>
                     <p className="text-[11px] text-cw-gray-6 mt-0.5">Referencia: {ref}</p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-[10px] text-cw-gray-6">Inversión base</p>
-                    <p className="text-xs font-medium text-cw-black">{formatEuros(min)} — {formatEuros(max)}</p>
-                  </div>
+                  {hasBudget && (
+                    <div className="text-right">
+                      <p className="text-[10px] text-cw-gray-6">Inversión base</p>
+                      <p className="text-xs font-medium text-cw-black">{formatEuros(min)} — {formatEuros(max)}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -209,8 +234,7 @@ export default function ContactForm() {
                 {serviciosList.map(srv => (
                   <div key={srv} onClick={() => toggleServicio(srv)} className="flex items-center gap-2 cursor-pointer">
                     <div
-                      className="w-4 h-4 rounded-[3px] shrink-0 border border-cw-gray-8 flex items-center justify-center transition-colors"
-                      style={{ background: selectedServicios.includes(srv) ? '#111111' : '#f9f9f7' }}
+                      className={`w-4 h-4 rounded-[3px] shrink-0 border border-cw-gray-8 flex items-center justify-center transition-colors ${selectedServicios.includes(srv) ? 'checkbox-on' : 'checkbox-off'}`}
                     >
                       {selectedServicios.includes(srv) && <span className="text-white text-[10px]">✓</span>}
                     </div>
@@ -239,8 +263,7 @@ export default function ContactForm() {
                     >
                       <div className="flex items-center gap-3">
                         <div
-                          className="w-4 h-4 rounded-[3px] shrink-0 border border-cw-gray-8 flex items-center justify-center transition-colors"
-                          style={{ background: active ? '#111111' : '#f9f9f7' }}
+                          className={`w-4 h-4 rounded-[3px] shrink-0 border border-cw-gray-8 flex items-center justify-center transition-colors ${active ? 'checkbox-on' : 'checkbox-off'}`}
                         >
                           {active && <span className="text-white text-[10px]">✓</span>}
                         </div>
@@ -257,7 +280,7 @@ export default function ContactForm() {
             </div>
 
             {/* Presupuesto estimado */}
-            {fromPlanifica ? (
+            {hasBudget ? (
               <div className="bg-cw-gray-10 border border-cw-gray-9 rounded-lg p-4">
                 <p className="text-[10px] tracking-[0.12rem] text-cw-gray-6 mb-3">INVERSIÓN ESTIMADA</p>
                 <div className="flex flex-col gap-1.5 text-[11px]">
@@ -320,6 +343,7 @@ export default function ContactForm() {
             </div>
 
           </form>
+          </>
         )}
       </div>
     </section>

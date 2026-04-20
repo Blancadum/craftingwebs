@@ -1,7 +1,12 @@
 import Link from 'next/link'
 import Logo from '@/src/components/ui/Logo'
+import MobileMenu from './MobileMenu'
 
-const links = ['Servicios', 'Proyectos', 'Nosotros']
+const links = [
+    { label: 'Servicios', href: '/servicios' },
+    { label: 'Catálogo', href: '/catalogo' },
+    { label: 'Nosotros', href: '/nosotros' },
+]
 
 export default function Navbar() {
     return (
@@ -16,15 +21,18 @@ export default function Navbar() {
 
             <div className="hidden md:flex gap-7">
                 {links.map((item) => (
-                    <Link key={item} href={`/${item.toLowerCase()}`} className="text-cw-gray-7 text-sm no-underline hover:text-cw-gray-9 transition-colors">
-                        {item}
+                    <Link key={item.href} href={item.href} className="text-cw-gray-7 text-xs no-underline hover:text-cw-gray-9 transition-colors">
+                        {item.label}
                     </Link>
                 ))}
             </div>
 
-            <Link href="/contacto" className="bg-cw-white text-cw-black text-xs font-medium px-4 py-1.5 rounded no-underline">
-                Contactar
-            </Link>
+            <div className="flex items-center gap-4">
+                <Link href="/contacto" className="hidden md:inline-flex bg-cw-white text-cw-black text-xs font-medium px-4 py-1.5 rounded no-underline">
+                    Contactar
+                </Link>
+                <MobileMenu />
+            </div>
 
         </nav>
     )

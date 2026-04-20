@@ -38,34 +38,30 @@ export default function CarruselProyectos({ proyectos, variant, tipo, fadeColor 
 
   return (
     <>
-      {/* Flechas */}
-      <div className="flex justify-end gap-2 px-8 mb-4">
+      {/* Carrusel con flechas laterales */}
+      <div className="relative">
+
+        {/* Flecha izquierda */}
         <button
           onClick={() => slide(-1)}
           aria-label="Anterior"
-          className="w-8 h-8 flex items-center justify-center rounded border border-cw-gray-9 text-cw-gray-6 hover:border-cw-gray-5 hover:text-cw-black transition-colors text-sm leading-none"
+          className="absolute left-3 top-[45%] -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white border border-cw-gray-9 shadow-sm flex items-center justify-center text-cw-gray-5 hover:text-cw-black hover:border-cw-gray-6 transition-colors"
         >
-          ←
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M9 2L4 7L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
-        <button
-          onClick={() => slide(1)}
-          aria-label="Siguiente"
-          className="w-8 h-8 flex items-center justify-center rounded border border-cw-gray-9 text-cw-gray-6 hover:border-cw-gray-5 hover:text-cw-black transition-colors text-sm leading-none"
-        >
-          →
-        </button>
-      </div>
 
-      {/* Carrusel */}
-      <div className="relative">
+        {/* Fades laterales */}
         <div
-          className="absolute right-0 top-0 bottom-0 w-16 pointer-events-none z-10"
-          style={{ background: `linear-gradient(to left, ${fadeColor}, transparent)` }}
+          className="carousel-fade absolute right-0 top-0 bottom-0 w-20 pointer-events-none z-10"
+          style={{ '--fade-color': fadeColor } as React.CSSProperties}
         />
+
+        {/* Scroll */}
         <div
           ref={scrollRef}
-          className="flex gap-4 overflow-x-auto px-8"
-          style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
+          className="carousel-scroll flex gap-4 overflow-x-auto px-14"
         >
           {proyectos.map(p => (
             <ProyectoCard
@@ -77,15 +73,26 @@ export default function CarruselProyectos({ proyectos, variant, tipo, fadeColor 
               onClick={() => setModal(p)}
             />
           ))}
-          <div className="flex-shrink-0 w-8" />
+          <div className="flex-shrink-0 w-10" />
         </div>
+
+        {/* Flecha derecha */}
+        <button
+          onClick={() => slide(1)}
+          aria-label="Siguiente"
+          className="absolute right-3 top-[45%] -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white border border-cw-gray-9 shadow-sm flex items-center justify-center text-cw-gray-5 hover:text-cw-black hover:border-cw-gray-6 transition-colors"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M5 2L10 7L5 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+
       </div>
 
       {/* Modal */}
       {modal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ backgroundColor: 'rgba(0,0,0,0.72)', backdropFilter: 'blur(4px)' }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
           onClick={() => setModal(null)}
         >
           <div
@@ -93,7 +100,7 @@ export default function CarruselProyectos({ proyectos, variant, tipo, fadeColor 
             onClick={e => e.stopPropagation()}
           >
             {/* Mockup ampliado */}
-            <div className="w-full" style={{ aspectRatio: '360/220' }}>
+            <div className="w-full aspect-mockup">
               <Mockup variant={variant} />
             </div>
 
@@ -129,8 +136,8 @@ export default function CarruselProyectos({ proyectos, variant, tipo, fadeColor 
                       disabled
                       className="flex rounded overflow-hidden border border-cw-gray-9 opacity-40 cursor-not-allowed"
                     >
-                      <span style={{ width: 20, height: 20, background: pal.colors[0], display: 'block' }} />
-                      <span style={{ width: 20, height: 20, background: pal.colors[1], display: 'block' }} />
+                      <span className="block w-5 h-5" style={{ background: pal.colors[0] }} />
+                      <span className="block w-5 h-5" style={{ background: pal.colors[1] }} />
                     </button>
                   ))}
                 </div>

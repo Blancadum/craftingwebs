@@ -3,7 +3,7 @@ import FooterCol from '@/src/components/ui/FooterCol'
 
 const navLinks = [
   { label: 'Servicios', href: '/servicios' },
-  { label: 'Proyectos', href: '/proyectos' },
+  { label: 'Catálogo', href: '/catalogo' },
   { label: 'Nosotros', href: '/nosotros' },
   { label: 'Contacto', href: '/contacto' },
 ]

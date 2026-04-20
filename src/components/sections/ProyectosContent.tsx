@@ -71,7 +71,7 @@ export default function ProyectosContent() {
       {/* Nav inpage */}
       <nav className="sticky top-0 z-20 bg-white border-b border-cw-gray-9">
         <div className="max-w-[1100px] mx-auto px-8">
-          <div className="flex gap-0 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
+          <div className="scrollbar-none flex gap-0 overflow-x-auto">
             {categorias.map(cat => (
               <a
                 key={cat.slug}
@@ -115,19 +115,19 @@ export default function ProyectosContent() {
       <section className="bg-cw-black py-14 px-8">
         <div className="max-w-[1100px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
-            <p className="text-[10px] tracking-[0.16rem] text-cw-gray-6 mb-2">HERRAMIENTA GRATUITA</p>
+            <p className="text-[10px] tracking-[0.16rem] text-cw-gray-6 mb-2">SIGUIENTE PASO</p>
             <h2 className="text-cw-white text-lg md:text-xl font-medium tracking-[-0.03rem] mb-2">
-              ¿No sabes qué tipo de web necesitas?
+              Solo te falta saber cuál es el tuyo.
             </h2>
             <p className="text-cw-gray-6 text-sm leading-7 max-w-[400px]">
-              Responde unas preguntas sobre tu negocio y presupuesto. Te decimos qué modelo encaja mejor y qué incluiría.
+              Ya tienes los modelos en la cabeza. Ahora responde tres preguntas sobre tu negocio y presupuesto — te decimos exactamente qué tipo de web necesitas y qué incluiría.
             </p>
           </div>
           <Link
             href="/planifica"
             className="inline-flex items-center gap-1.5 bg-transparent text-cw-gray-8 border border-cw-gray-5 text-sm font-medium px-5 py-2.5 rounded no-underline tracking-[0.02em] hover:border-cw-gray-7 hover:text-cw-white transition-colors flex-shrink-0"
           >
-            Definir mi web →
+            Encontrar mi modelo →
           </Link>
         </div>
       </section>
@@ -135,10 +135,10 @@ export default function ProyectosContent() {
       {/* Más proyectos en marcha */}
       <section className="bg-cw-gray-10 py-16 px-8">
         <div className="max-w-[1100px] mx-auto flex flex-col items-center text-center py-20 border border-cw-gray-9 rounded-lg bg-white">
-          <p className="text-lg font-medium text-cw-black mb-2.5">Más proyectos en marcha.</p>
+          <p className="text-lg font-medium text-cw-black mb-2.5">Más modelos en camino.</p>
           <p className="text-sm text-cw-gray-6 leading-7 max-w-[360px] mb-7">
-            Estamos preparando más casos de estudio.
-            Mientras tanto, si ves algo que te inspire o quieres ver cómo trabajamos,
+            Estamos preparando más referencias.
+            Mientras tanto, si ves algo que te inspire o quieres saber cómo trabajamos,
             cuéntanos tu proyecto.
           </p>
           <Link href="/contacto" className="inline-block bg-cw-black text-cw-white text-sm font-medium px-6 py-2.5 rounded no-underline hover:opacity-80 transition-opacity">

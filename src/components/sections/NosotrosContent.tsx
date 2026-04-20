@@ -15,7 +15,7 @@ const perfiles = [
     skills: ['Next.js', 'React', 'Node.js', 'WordPress', 'SEO técnico', 'Figma'],
     links: [
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/blancadum/' },
-      { label: 'psiqfly.es', href: 'https://www.psiqfly.es/autora/' },
+      { label: 'psiqfly.com', href: 'https://www.psiqfly.com/autora/' },
     ],
   },
   {
@@ -56,8 +56,9 @@ const values = [
 
 const stack = [
   { label: 'DESARROLLO', items: ['Next.js', 'React', 'WordPress', 'Node.js', 'HTML · CSS · JS'] },
-  { label: 'DISEÑO', items: ['Figma', 'Canva'] },
+  { label: 'DISEÑO', items: ['Figma', 'Canva', 'Photoshop', 'Lightroom'] },
   { label: 'SEO', items: ['Screaming Frog', 'Semrush', 'Ahrefs', 'Google Search Console', 'GA4', 'Surfer SEO'] },
+  { label: 'ARQUITECTURA SEO', items: ['Sitemaps XML', 'Schema markup', 'Core Web Vitals', 'Link building', 'Keyword research'] },
 ]
 
 export default function NosotrosContent() {

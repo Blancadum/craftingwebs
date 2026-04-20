@@ -241,7 +241,7 @@ export default function Configurador() {
             </Link>
             <button
               onClick={reiniciar}
-              className="text-[11px] text-cw-gray-6 hover:text-cw-gray-8 transition-colors"
+              className="text-[11px] text-cw-gray-6 hover:text-cw-black transition-colors"
             >
               Volver a empezar
             </button>
