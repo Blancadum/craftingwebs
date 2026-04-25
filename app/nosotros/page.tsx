@@ -15,7 +15,7 @@ export default function Nosotros() {
                 subtitle="Y por qué lo hacemos."
                 description="Nació de una convicción simple: los profesionales autónomos merecen una presencia digital a la altura de su trabajo, sin pagar precios de gran agencia ni conformarse con plantillas genéricas. Diseño, desarrollo y SEO en el mismo equipo, para que no tengas que coordinar a tres proveedores distintos."
             />
-            <NosotrosContent />
+            {/* <NosotrosContent /> */}
             <Footer />
         </main>
     )
